@@ -1,17 +1,14 @@
 #!/usr/bin/python3
-""" Creating a class """
+"""Defines a class MyInt that inherits from int."""
 
 
-Rectangle = __import__('9-rectangle').Rectangle
+class MyInt(int):
+    """Invert int operators == and !=."""
 
+    def __eq__(self, value):
+        """Override == opeartor with != behavior."""
+        return self.real != value
 
-class Square(Rectangle):
-    """A Square class that inherits from Rectangle"""
-    def __init__(self, size):
-        self.integer_validator("size", size)
-        self.__size = size
-        super().__init__(size, size)
-
-    def area(self):
-        """ area method """
-        return self.__size ** 2
+    def __ne__(self, value):
+        """Override != operator with == behavior."""
+        return self.real == value
