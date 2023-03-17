@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This script prints the first State object
+This script lists all State objects
+that contain the letter `a`
 from the database `hbtn_0e_6_usa`.
 """
 
@@ -21,9 +22,6 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
 
     session = Session()
-    instance = session.query(State).order_by(State.id).first()
 
-    if instance is None:
-        print('Nothing')
-    else:
+    for instance in session.query(State).filter(State.name.contains('a')):
         print('{0}: {1}'.format(instance.id, instance.name))
